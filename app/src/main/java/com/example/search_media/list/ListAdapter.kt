@@ -10,11 +10,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.search_media.databinding.ItemImageBinding
 import com.example.search_media.databinding.ItemVideoBinding
-import com.example.search_media.list.viewholder.ImageViewHolder
-import com.example.search_media.list.viewholder.VideoViewHolder
+import com.example.search_media.list.viewholder.ImageItemViewHolder
+import com.example.search_media.list.viewholder.VideoItemViewHolder
 import com.example.search_media.model.ImageItem
 
-class ListAdapter : ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {
+class ListAdapter(private val itemHandler: ItemHandler? = null) :
+    ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {
 
     override fun getItemViewType(position: Int): Int {
         return if (getItem(position) is ImageItem) {
@@ -27,9 +28,9 @@ class ListAdapter : ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return if (viewType == IMAGE) {
-            ImageViewHolder(ItemImageBinding.inflate(inflater, parent, false))
+            ImageItemViewHolder(ItemImageBinding.inflate(inflater, parent, false), itemHandler)
         } else {
-            VideoViewHolder(ItemVideoBinding.inflate(inflater, parent, false))
+            VideoItemViewHolder(ItemVideoBinding.inflate(inflater, parent, false), itemHandler)
         }
     }
 
@@ -37,9 +38,9 @@ class ListAdapter : ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
         if (getItemViewType(position) == IMAGE) {
-            (holder as ImageViewHolder).bind(item)
+            (holder as ImageItemViewHolder).bind(item)
         } else {
-            (holder as VideoViewHolder).bind(item)
+            (holder as VideoItemViewHolder).bind(item)
         }
     }
 

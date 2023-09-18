@@ -7,6 +7,6 @@ class SearchRepositoryImpl(private val service: SearchService) : SearchRepositor
     override suspend fun search(query: String): List<ListItem>{
         val imageResult = service.searchImage(query = query)
         val videoResult = service.searchVideo(query = query)
-        return (imageResult.documents + videoResult.documents).sortedBy { it.dateTime }
+        return (imageResult.documents + videoResult.documents).sortedByDescending { it.dateTime }
     }
 }

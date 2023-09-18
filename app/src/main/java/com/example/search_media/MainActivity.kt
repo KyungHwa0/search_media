@@ -67,14 +67,16 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         val searchView = menu.findItem(R.id.search).actionView as SearchView
         var searchJob: Job? = null
 
-        // 검색 키워드 입력
+        // 마지막 검색어 저장
+        val lastSearchQuery = sharedPreferences.getString("LAST_SEARCH_QUERY", "")
+        searchView.setQuery(lastSearchQuery, false)
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 searchFragment.searchKeyword(query)
                 return false
             }
 
-            // 검색어 변경시
             override fun onQueryTextChange(newText: String): Boolean {
                 binding.viewPager.setCurrentItem(0, true)
                 searchJob?.cancel()

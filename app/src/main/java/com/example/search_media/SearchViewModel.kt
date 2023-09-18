@@ -25,6 +25,7 @@ class SearchViewModel(private val searchRepository: SearchRepository) : ViewMode
             try {
                 _showLoading.postValue(true)
                 val list = searchRepository.search(query)
+                val limitedList = list.take(80)
                 _listLiveData.postValue(list)
             } catch (e: Exception) {
                 _listLiveData.postValue(emptyList())

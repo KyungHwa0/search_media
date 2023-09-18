@@ -7,11 +7,11 @@ data class ImageListResponse(
     val documents : List<ImageItem>
 )
 
-data class ImageItem (
+data class ImageItem(
     @SerializedName("thumbnail_url") override val thumbnailUrl: String,
-    @SerializedName("collection") val collection: String,
-    @SerializedName("display_sitename") val siteName : String,
-    @SerializedName("doc_url") val docUrl : String,
+    val collection: String,
+    @SerializedName("display_sitename") val siteName: String,
+    @SerializedName("doc_url") val docUrl: String,
     @SerializedName("datetime") override val dateTime: Date,
-    override var isFavorite: Boolean
+    override var isFavorite : Boolean = false
 ) : ListItem

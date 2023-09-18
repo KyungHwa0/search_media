@@ -9,9 +9,9 @@ data class VideoListResponse(
 
 data class VideoItem(
     @SerializedName("thumbnail") override val thumbnailUrl: String,
-    @SerializedName("title") val title: String,
+    val title: String,
     @SerializedName("play_time") val playTime: Int,
-    @SerializedName("author") val author: String,
+    val author: String,
     @SerializedName("datetime") override val dateTime: Date,
     override var isFavorite : Boolean = false
 ) : ListItem

@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                     delay(debounceTime)
                     searchFragment.searchKeyword(newText)
 
-                    // Save the search keyword
+                    // 새로운 검색어를 Sharedpreferences에 저장
                     with(sharedPreferences.edit()) {
                         putString("LAST_SEARCH_QUERY", newText)
                         apply()
@@ -98,6 +98,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         return true
     }
 
+    // 즐겨찾기 삭제를 위한 인터페이스....
     interface FavoritesChangedListener{
         fun onFavoriteDeleted(item: ListItem)
     }

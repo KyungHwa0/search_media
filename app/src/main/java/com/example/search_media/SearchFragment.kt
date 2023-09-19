@@ -17,12 +17,14 @@ import com.example.search_media.repository.SearchRepositoryImpl
 
 class SearchFragment : Fragment(), MainActivity.FavoritesChangedListener {
 
+    // RetrofitManager의 searchService를 사용하여 SearchRepositoryImpl을 생성
     private val viewModel : SearchViewModel by viewModels {
         SearchViewModel.SearchViewModelFactory(SearchRepositoryImpl(RetrofitManager.searchService))
     }
     // null 로 설정 하므로서 메모리 누수 방지
     private var binding : FragmentSearchResultBinding? = null
 
+    // ListAdapter 를 초기화 하고, Handler로 전달..?
     private val adapter by lazy { ListAdapter(Handler(viewModel)) }
 
     private lateinit var sharedPreferences: SharedPreferences
@@ -62,6 +64,7 @@ class SearchFragment : Fragment(), MainActivity.FavoritesChangedListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        // MainActivity에 FavoritesChangedListener 설정
         if (context is MainActivity) {
             context.favoritesChangedListener = this
         }
@@ -69,9 +72,11 @@ class SearchFragment : Fragment(), MainActivity.FavoritesChangedListener {
 
     override fun onDetach() {
         super.onDetach()
+        // FavoritesChangedListener 해제
         (activity as? MainActivity)?.favoritesChangedListener = null
     }
 
+    // 검색어 입력 받아서 뷰모델을 통해 검색을 함
     fun searchKeyword(text: String) {
         viewModel.search(text)
 
@@ -85,6 +90,7 @@ class SearchFragment : Fragment(), MainActivity.FavoritesChangedListener {
     private fun observeViewModel() {
         viewModel.listLiveData.observe(viewLifecycleOwner) {
             binding?.apply {
+                // 리스트 있고 없고에 따른 뷰 표시
                 if(it.isEmpty()) {
                     emptyTextView.isVisible = true
                     recyclerView.isVisible = false
@@ -97,11 +103,13 @@ class SearchFragment : Fragment(), MainActivity.FavoritesChangedListener {
         }
     }
 
+    // 즐겨찾기 삭제
     override fun onFavoriteDeleted(item: ListItem) {
         if(item.isFavorite) viewModel.toggleFavorite(item)
     }
 }
 
+// 아이템 클릭시 핸들러 관련 처리?
 class Handler(private val viewModel: SearchViewModel) : ItemHandler {
     override fun onClickFavorite(item: ListItem) {
         viewModel.toggleFavorite(item)

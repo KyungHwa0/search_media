@@ -47,7 +47,7 @@ class FavoritesFragment : Fragment() {
                 recyclerView.isVisible = true
             }
         }
-        adapter.submitList(Common.favoritesList.sortedBy { it.dateTime })
+        adapter.submitList(Common.favoritesList.sortedByDescending { it.dateTime })
     }
 
     override fun onDestroyView() {

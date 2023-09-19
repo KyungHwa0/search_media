@@ -14,7 +14,7 @@ import com.example.search_media.list.viewholder.ImageItemViewHolder
 import com.example.search_media.list.viewholder.VideoItemViewHolder
 import com.example.search_media.model.ImageItem
 
-class ListAdapter(private val itemHandler: ItemHandler? = null) :
+class ListAdapter(private val itemHandler: ItemHandler) :
     ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {
 
     override fun getItemViewType(position: Int): Int {

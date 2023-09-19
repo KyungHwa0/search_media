@@ -15,7 +15,7 @@ import com.example.search_media.list.ListAdapter
 import com.example.search_media.model.ListItem
 import com.example.search_media.repository.SearchRepositoryImpl
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(), MainActivity.FavoritesChangedListener {
 
     private val viewModel : SearchViewModel by viewModels {
         SearchViewModel.SearchViewModelFactory(SearchRepositoryImpl(RetrofitManager.searchService))
@@ -60,6 +60,18 @@ class SearchFragment : Fragment() {
         binding = null
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MainActivity) {
+            context.favoritesChangedListener = this
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        (activity as? MainActivity)?.favoritesChangedListener = null
+    }
+
     fun searchKeyword(text: String) {
         viewModel.search(text)
 
@@ -84,9 +96,14 @@ class SearchFragment : Fragment() {
             adapter.submitList(it)
         }
     }
-    class Handler(private val viewModel: SearchViewModel) : ItemHandler {
-        override fun onClickFavorite(item: ListItem) {
-            viewModel.toggleFavorite(item)
-        }
+
+    override fun onFavoriteDeleted(item: ListItem) {
+        if(item.isFavorite) viewModel.toggleFavorite(item)
+    }
+}
+
+class Handler(private val viewModel: SearchViewModel) : ItemHandler {
+    override fun onClickFavorite(item: ListItem) {
+        viewModel.toggleFavorite(item)
     }
 }

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.widget.SearchView
 import com.example.search_media.databinding.ActivityMainBinding
+import com.example.search_media.model.ListItem
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     private val searchFragment = SearchFragment()
     private val fragmentList = listOf(searchFragment, FavoritesFragment())
     private val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle, fragmentList)
+    var favoritesChangedListener : FavoritesChangedListener? = null
 
     // 코루틴
     private lateinit var job: Job
@@ -94,5 +96,9 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             }
         })
         return true
+    }
+
+    interface FavoritesChangedListener{
+        fun onFavoriteDeleted(item: ListItem)
     }
 }

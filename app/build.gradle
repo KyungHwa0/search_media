@@ -1,7 +1,12 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+
+    id 'kotlin-kapt'
 }
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
     namespace 'com.example.search_media'
@@ -15,6 +20,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "KAKAO_REST_API_KEY", properties["kakao_rest_api_key"]
     }
 
     buildTypes {
@@ -31,9 +38,11 @@ android {
         jvmTarget = '1.8'
     }
 
+
     buildFeatures {
         dataBinding true
         viewBinding true
+        buildConfig true
     }
 }
 
@@ -43,6 +52,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.firebase:protolite-well-known-types:18.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -55,4 +65,13 @@ dependencies {
     implementation 'io.coil-kt:coil:2.2.2'
 
     implementation 'com.google.code.gson:gson:2.10.1'
+
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
+    implementation 'androidx.fragment:fragment-ktx:1.6.1'
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+
+    implementation "androidx.paging:paging-runtime-ktx:3.2.1"
+
 }

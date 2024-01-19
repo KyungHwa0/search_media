@@ -1,4 +1,4 @@
-package com.example.search_media.model
+package com.example.search_media.domain.model
 
 import java.util.Date
 

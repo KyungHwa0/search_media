@@ -1,16 +1,17 @@
-package com.example.search_media
+package com.example.search_media.ui.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.search_media.model.ImageItem
-import com.example.search_media.model.ListItem
-import com.example.search_media.model.VideoItem
-import com.example.search_media.repository.SearchRepository
+import com.example.search_media.domain.model.ImageItem
+import com.example.search_media.domain.model.ListItem
+import com.example.search_media.domain.model.VideoItem
+import com.example.search_media.data.repository.SearchRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import androidx.lifecycle.ViewModelProvider
+import com.example.search_media.Common
 
 class SearchViewModel(private val searchRepository: SearchRepository) : ViewModel() {
 

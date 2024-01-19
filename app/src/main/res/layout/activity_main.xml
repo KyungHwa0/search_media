@@ -7,14 +7,14 @@
 
         <variable
             name="view"
-            type="com.example.search_media.MainActivity" />
+            type="com.example.search_media.ui.MainActivity" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".ui.MainActivity">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"

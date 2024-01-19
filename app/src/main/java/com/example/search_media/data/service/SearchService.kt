@@ -1,7 +1,7 @@
-package com.example.search_media
+package com.example.search_media.data.service
 
-import com.example.search_media.model.ImageListResponse
-import com.example.search_media.model.VideoListResponse
+import com.example.search_media.domain.model.ImageListResponse
+import com.example.search_media.domain.model.VideoListResponse
 import com.example.search_media.BuildConfig
 import retrofit2.http.GET
 import retrofit2.http.Header

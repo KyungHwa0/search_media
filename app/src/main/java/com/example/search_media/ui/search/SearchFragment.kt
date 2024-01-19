@@ -1,4 +1,4 @@
-package com.example.search_media
+package com.example.search_media.ui.search
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -9,11 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import com.example.search_media.ui.MainActivity
+import com.example.search_media.data.service.RetrofitManager
 import com.example.search_media.databinding.FragmentSearchResultBinding
-import com.example.search_media.list.ItemHandler
-import com.example.search_media.list.ListAdapter
-import com.example.search_media.model.ListItem
-import com.example.search_media.repository.SearchRepositoryImpl
+import com.example.search_media.ui.list.ItemHandler
+import com.example.search_media.ui.list.ListAdapter
+import com.example.search_media.domain.model.ListItem
+import com.example.search_media.data.repository.SearchRepositoryImpl
 
 class SearchFragment : Fragment(), MainActivity.FavoritesChangedListener {
 

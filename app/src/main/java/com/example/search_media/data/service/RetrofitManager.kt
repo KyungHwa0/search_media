@@ -1,4 +1,4 @@
-package com.example.search_media
+package com.example.search_media.data.service
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

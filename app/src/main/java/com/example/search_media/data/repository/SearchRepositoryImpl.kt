@@ -1,7 +1,7 @@
-package com.example.search_media.repository
+package com.example.search_media.data.repository
 
-import com.example.search_media.SearchService
-import com.example.search_media.model.ListItem
+import com.example.search_media.data.service.SearchService
+import com.example.search_media.domain.model.ListItem
 
 class SearchRepositoryImpl(private val service: SearchService) : SearchRepository {
     override suspend fun search(query: String): List<ListItem>{

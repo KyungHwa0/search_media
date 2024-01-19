@@ -1,10 +1,10 @@
-package com.example.search_media.list.viewholder
+package com.example.search_media.ui.list.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.search_media.databinding.ItemVideoBinding
-import com.example.search_media.list.ItemHandler
-import com.example.search_media.model.ListItem
-import com.example.search_media.model.VideoItem
+import com.example.search_media.ui.list.ItemHandler
+import com.example.search_media.domain.model.ListItem
+import com.example.search_media.domain.model.VideoItem
 
 class VideoItemViewHolder(private val binding: ItemVideoBinding,
                           private val itemHandler: ItemHandler? = null) :

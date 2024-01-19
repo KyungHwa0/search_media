@@ -1,18 +1,18 @@
-package com.example.search_media.list
+package com.example.search_media.ui.list
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.search_media.model.ListItem
+import com.example.search_media.domain.model.ListItem
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.search_media.databinding.ItemImageBinding
 import com.example.search_media.databinding.ItemVideoBinding
-import com.example.search_media.list.viewholder.ImageItemViewHolder
-import com.example.search_media.list.viewholder.VideoItemViewHolder
-import com.example.search_media.model.ImageItem
+import com.example.search_media.ui.list.viewholder.ImageItemViewHolder
+import com.example.search_media.ui.list.viewholder.VideoItemViewHolder
+import com.example.search_media.domain.model.ImageItem
 
 class ListAdapter(private val itemHandler: ItemHandler) :
     ListAdapter<ListItem, RecyclerView.ViewHolder>(diffUtil) {

@@ -6,11 +6,11 @@
 
         <variable
             name="item"
-            type="com.example.search_media.model.ImageItem" />
+            type="com.example.search_media.domain.model.ImageItem" />
 
         <variable
             name="handler"
-            type="com.example.search_media.list.ItemHandler" />
+            type="com.example.search_media.ui.list.ItemHandler" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

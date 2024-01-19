@@ -1,6 +1,6 @@
 package com.example.search_media
 
-import com.example.search_media.model.ListItem
+import com.example.search_media.domain.model.ListItem
 
 object Common {
     val favoritesList = mutableListOf<ListItem>()

@@ -1,4 +1,4 @@
-package com.example.search_media
+package com.example.search_media.ui
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.widget.SearchView
+import com.example.search_media.R
 import com.example.search_media.databinding.ActivityMainBinding
-import com.example.search_media.model.ListItem
+import com.example.search_media.domain.model.ListItem
+import com.example.search_media.ui.favorites.FavoritesFragment
+import com.example.search_media.ui.search.SearchFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext

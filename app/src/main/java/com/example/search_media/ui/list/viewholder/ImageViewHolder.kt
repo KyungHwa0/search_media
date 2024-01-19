@@ -1,10 +1,10 @@
-package com.example.search_media.list.viewholder
+package com.example.search_media.ui.list.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.search_media.databinding.ItemImageBinding
-import com.example.search_media.list.ItemHandler
-import com.example.search_media.model.ImageItem
-import com.example.search_media.model.ListItem
+import com.example.search_media.ui.list.ItemHandler
+import com.example.search_media.domain.model.ImageItem
+import com.example.search_media.domain.model.ListItem
 
 class ImageItemViewHolder(
     private val binding: ItemImageBinding,

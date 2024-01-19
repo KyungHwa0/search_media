@@ -1,4 +1,4 @@
-package com.example.search_media
+package com.example.search_media.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
